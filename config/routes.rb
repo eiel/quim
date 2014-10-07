@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :templates
+
   resources :customers do
     collection do
       get :post
