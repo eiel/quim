@@ -77,4 +77,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { :host => ENV["SERVER_NAME"] }
+  config.force_ssl = true
 end
