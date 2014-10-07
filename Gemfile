@@ -64,3 +64,4 @@ gem "slim-rails"
 gem "newrelic_rpm"
 gem "liquid"
 gem "letter_opener", :group => :development
+gem 'acts-as-taggable-on'
