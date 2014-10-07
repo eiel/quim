@@ -2,7 +2,7 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   def post
-    Message.basic(Customer.first,"hoge").deliver
+    Message.basic(Customer.first,"hi {{person.last_name}}").deliver
     redirect_to({ action: :index }, notice: "deriveied")
   end
 

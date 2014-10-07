@@ -7,9 +7,7 @@ class Message < ActionMailer::Base
   #   en.message.default.subject
   #
   def basic(customer,body)
-    @customer = customer
-    @body = body
-
+    @body = Liquid::Template.parse(body).render("person" => customer.attributes)
     mail to: customer.email
   end
 end
