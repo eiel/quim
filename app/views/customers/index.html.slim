@@ -5,6 +5,7 @@ table
     tr
       th Last name
       th First name
+      th Email
       th
       th
       th
@@ -14,6 +15,7 @@ table
       tr
         td = customer.last_name
         td = customer.first_name
+        td = customer.email
         td = link_to 'Show', customer
         td = link_to 'Edit', edit_customer_path(customer)
         td = link_to 'Destroy', customer, data: {:confirm => 'Are you sure?'}, :method => :delete

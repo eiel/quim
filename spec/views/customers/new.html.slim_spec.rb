@@ -4,7 +4,8 @@ RSpec.describe "customers/new", :type => :view do
   before(:each) do
     assign(:customer, Customer.new(
       :last_name => "MyString",
-      :first_name => "MyString"
+      :first_name => "MyString",
+      :email => "MyString"
     ))
   end
 
@@ -16,6 +17,8 @@ RSpec.describe "customers/new", :type => :view do
       assert_select "input#customer_last_name[name=?]", "customer[last_name]"
 
       assert_select "input#customer_first_name[name=?]", "customer[first_name]"
+
+      assert_select "input#customer_email[name=?]", "customer[email]"
     end
   end
 end

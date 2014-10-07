@@ -6,6 +6,9 @@ p
 p
   strong First name:
   = @customer.first_name
+p
+  strong Email:
+  = @customer.email
 
 = link_to 'Edit', edit_customer_path(@customer)
 '|
