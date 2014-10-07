@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  resources :templates
-
-  resources :customers do
-    collection do
-      get :post
+  resources :templates do
+    member do
+      post :post
     end
   end
+
+  resources :customers
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

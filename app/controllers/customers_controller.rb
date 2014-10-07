@@ -1,14 +1,6 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
-  def post
-    template = Template.first
-    Customer.all.find_each do |customer|
-      Message.basic(customer,template.body).deliver
-    end
-    redirect_to({ action: :index }, notice: "deriveied")
-  end
-
   # GET /customers
   # GET /customers.json
   def index

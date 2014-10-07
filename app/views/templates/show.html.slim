@@ -10,6 +10,21 @@ p
   strong Body:
   = @template.body
 
+div
+  h1 送信する
+  = form_tag [:post, @template], method: :post do
+    div
+      = label :delivery, :tags, 'タグ'
+      = text_field :delivery, :tags
+    div
+      = submit_tag "送信", data: { confirm: "送信してもよろしいですか?"}
+
+div
+  h1 タグ一覧
+  - @tags.each do |tag|
+    ul
+      li= tag
+
 = link_to 'Edit', edit_template_path(@template)
 '|
 = link_to 'Back', templates_path

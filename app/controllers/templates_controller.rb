@@ -1,5 +1,16 @@
 class TemplatesController < ApplicationController
-  before_action :set_template, only: [:show, :edit, :update, :destroy]
+  before_action :set_template, only: [:show, :edit, :update, :destroy, :post]
+
+  def post
+    tags = params[:delivery][:tags]
+    if tags == "all"
+      customers = Customer.all
+    else
+      customers = Customer.tagged_with(tags.split(","))
+    end
+    @template.deliver(customers)
+    redirect_to( @template, notice: "deriveied")
+  end
 
   # GET /templates
   # GET /templates.json
@@ -10,6 +21,7 @@ class TemplatesController < ApplicationController
   # GET /templates/1
   # GET /templates/1.json
   def show
+    @tags = Customer.tag_counts_on(:tags).order(:name)
   end
 
   # GET /templates/new
