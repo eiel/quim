@@ -1,6 +1,11 @@
 class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
+  def post
+    Message.basic(Customer.first,"hoge").deliver
+    redirect_to({ action: :index }, notice: "deriveied")
+  end
+
   # GET /customers
   # GET /customers.json
   def index
