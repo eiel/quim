@@ -6,6 +6,7 @@ table
       th Last name
       th First name
       th Email
+      th tag
       th
       th
       th
@@ -16,6 +17,7 @@ table
         td = customer.last_name
         td = customer.first_name
         td = customer.email
+        td = customer.tags.map(&:name).join(" ")
         td = link_to 'Show', customer
         td = link_to 'Edit', edit_customer_path(customer)
         td = link_to 'Destroy', customer, data: {:confirm => 'Are you sure?'}, :method => :delete
@@ -23,3 +25,14 @@ table
 br
 
 = link_to 'New Customer', new_customer_path
+
+h1 一括登録
+
+= form_tag "/customers/tags", method: :post do
+  div
+    = label :tag, :name, "タグ"
+    = text_field :tag, :name
+  div
+    = text_area :tag, :emails
+
+  = submit_tag "送信"

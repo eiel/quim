@@ -61,6 +61,16 @@ class CustomersController < ApplicationController
     end
   end
 
+  def tags
+    tag = params[:tag]
+    tag[:emails].split.each do |email|
+      customer = Customer.where(email: email).first_or_initialize
+      customer.tag_list.add(tag[:name])
+      customer.save!
+    end
+    redirect_to action: :index, notice: 'メールアドレスを登録しました。'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
